@@ -13,6 +13,7 @@ before_install:
 # commands to run
 # script:
 
+language: generic
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
