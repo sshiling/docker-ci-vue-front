@@ -7,6 +7,7 @@ services:
 
 # build the image
 before_install:
+  - gem install bundler
   - docker build -t sshiling/docker-ci-vue-front -f Dockerfile.dev .
 
 # commands to run
