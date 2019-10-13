@@ -1,0 +1,26 @@
+# only if admin
+sudo: required
+
+
+services:
+  - docker
+
+# build the image
+before_install:
+  - docker build -t sshiling/docker-ci-vue-front -f Dockerfile.dev .
+
+# commands to run
+# script:
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-ci-vue-front"
+  env: "DockerCiVueFront-env"
+  bucket_name: "elasticbeanstalk-us-east-1-598113398528"
+  bucket_path: "docker-ci-vue-front"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
