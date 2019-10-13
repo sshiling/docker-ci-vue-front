@@ -8,4 +8,5 @@ RUN npm run build
 
 # copy build folder, paste into nginx container, serve app via nginx
 FROM nginx
+EXPOSE 80
 COPY --from=builder /home/app/dist /usr/share/nginx/html
